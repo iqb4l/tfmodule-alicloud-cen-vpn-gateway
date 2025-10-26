@@ -3,6 +3,7 @@ variable "customer_gateways" {
   type = map(object({
     ip_address  = string
     name        = string
+    asn         = string
   }))
   default = {}
 }

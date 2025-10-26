@@ -3,6 +3,7 @@ resource "alicloud_vpn_customer_gateway" "this" {
   
   ip_address            = each.value.ip_address
   customer_gateway_name = each.value.name
+  asn                   = each.value.asn
 }
 
 # Create VPN Gateway Attachments
