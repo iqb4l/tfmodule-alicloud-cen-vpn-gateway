@@ -17,8 +17,8 @@ variable "vpn_gateways" {
     enable_tunnels_bgp = optional(bool, false)
     tunnel_options_specification = list(object({
       customer_gateway_key = string
-      enable_nat_traversal = optional(string, null)
-      enable_dpd           = optional(string, null)
+      enable_nat_traversal = optional(bool, true)
+      enable_dpd           = optional(bool, true)
       tunnel_ike_config = optional(list(object({
         ike_auth_alg = optional(string, null)
         local_id     = optional(string, null)

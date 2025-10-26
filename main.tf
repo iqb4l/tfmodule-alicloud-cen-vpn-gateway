@@ -19,8 +19,8 @@ resource "alicloud_vpn_gateway_vpn_attachment" "this" {
   tunnel_options_specification {
     tunnel_index         = "1"
     customer_gateway_id  = alicloud_vpn_customer_gateway.this[each.value.tunnel_options_specification[0].customer_gateway_key].id
-    enable_nat_traversal = lookup(each.value.tunnel_options_specification[0], "enable_nat_traversal", true)
-    enable_dpd           = lookup(each.value.tunnel_options_specification[0], "enable_dpd", true)
+    enable_nat_traversal = each.value.tunnel_options_specification[0].enable_nat_traversal
+    enable_dpd           = each.value.tunnel_options_specification[0].enable_dpd
     
     dynamic "tunnel_ike_config" {
       for_each = length(each.value.tunnel_options_specification[0].tunnel_ike_config) > 0 ? each.value.tunnel_options_specification[0].tunnel_ike_config : []
@@ -61,8 +61,8 @@ resource "alicloud_vpn_gateway_vpn_attachment" "this" {
   tunnel_options_specification {
     tunnel_index         = "2"
     customer_gateway_id  = alicloud_vpn_customer_gateway.this[each.value.tunnel_options_specification[0].customer_gateway_key].id
-    enable_nat_traversal = lookup(each.value.tunnel_options_specification[0], "enable_nat_traversal", true)
-    enable_dpd           = lookup(each.value.tunnel_options_specification[0], "enable_dpd", true)
+    enable_nat_traversal = each.value.tunnel_options_specification[0].enable_nat_traversal
+    enable_dpd           = each.value.tunnel_options_specification[0].enable_dpd
     
     dynamic "tunnel_ike_config" {
       for_each = length(each.value.tunnel_options_specification[0].tunnel_ike_config) > 0 ? each.value.tunnel_options_specification[0].tunnel_ike_config : []
