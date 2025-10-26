@@ -13,16 +13,3 @@ output "vpn_gateway_ids" {
     key => vpn.id
   }
 }
-
-output "vpn_gateway_details" {
-  description = "Complete details of VPN Gateway Attachments"
-  value = {
-    for key, vpn in alicloud_vpn_gateway_vpn_attachment.this :
-    key => {
-      id              = vpn.id
-      status          = vpn.status
-      vpn_gateway_id  = vpn.vpn_gateway_id
-      internet_ip     = vpn.internet_ip
-    }
-  }
-}
