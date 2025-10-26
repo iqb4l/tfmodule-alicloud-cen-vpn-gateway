@@ -21,8 +21,6 @@ resource "alicloud_vpn_gateway_vpn_attachment" "this" {
     iterator = tunnel
     content {
       tunnel_index         = tostring(tunnel.key + 1)
-      role                 = tunnel.value.role
-      status               = tunnel.value.status
       customer_gateway_id  = alicloud_vpn_customer_gateway.this[tunnel.value.customer_gateway_key].id
       enable_nat_traversal = lookup(tunnel, "enable_nat_traversal", true)
       enable_dpd           = lookup(tunnel, "enable_dpd", true)
