@@ -24,8 +24,8 @@ resource "alicloud_vpn_gateway_vpn_attachment" "this" {
       role                 = tunnel.value.role
       status               = tunnel.value.status
       customer_gateway_id  = alicloud_vpn_customer_gateway.this[tunnel.value.customer_gateway_key].id
-      enable_nat_traversal = tunnel.value.enable_nat_traversal
-      enable_dpd           = tunnel.value.enable_dpd
+      enable_nat_traversal = lookup(tunnel, "enable_nat_traversal", true)
+      enable_dpd           = lookup(tunnel, "enable_dpd", true)
       
       dynamic "tunnel_ike_config" {
         for_each = tunnel.value.tunnel_ike_config
