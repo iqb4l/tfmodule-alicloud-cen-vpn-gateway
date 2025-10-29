@@ -35,8 +35,6 @@ variable "vpn_gateways" {
         local_asn           = optional(string, null)
         tunnel_cidr         = optional(string, null)
         local_bgp_ip        = optional(string, null)
-        tunnel_cidr_slave   = optional(string, null)  # BGP CIDR for slave tunnel
-        local_bgp_ip_slave  = optional(string, null)  # BGP IP for slave tunnel
       })), [])
       tunnel_ipsec_config = optional(list(object({
         ipsec_pfs      = optional(string, null)
