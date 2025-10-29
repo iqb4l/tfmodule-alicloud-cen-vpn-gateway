@@ -61,7 +61,7 @@ resource "alicloud_vpn_gateway_vpn_attachment" "this" {
   # Slave tunnel (tunnel 2) - required for redundancy
   tunnel_options_specification {
     tunnel_index         = "2"
-    customer_gateway_id  = alicloud_vpn_customer_gateway.this[each.value.tunnel_options_specification[0].customer_gateway_key].id
+    customer_gateway_id  = alicloud_vpn_customer_gateway.this[each.value.tunnel_options_specification[1].customer_gateway_key].id
     enable_nat_traversal = each.value.tunnel_options_specification[0].enable_nat_traversal
     enable_dpd           = each.value.tunnel_options_specification[0].enable_dpd
     
