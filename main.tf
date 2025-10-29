@@ -66,7 +66,7 @@ resource "alicloud_vpn_gateway_vpn_attachment" "this" {
     enable_dpd           = each.value.tunnel_options_specification[0].enable_dpd
     
     dynamic "tunnel_ike_config" {
-      for_each = length(each.value.tunnel_options_specification[0].tunnel_ike_config) > 0 ? each.value.tunnel_options_specification[0].tunnel_ike_config : []
+      for_each = length(each.value.tunnel_options_specification[0].tunnel_ike_config) > 0 ? each.value.tunnel_options_specification[1].tunnel_ike_config : []
       content {
         ike_auth_alg = tunnel_ike_config.value.ike_auth_alg
         local_id     = tunnel_ike_config.value.local_id
@@ -81,7 +81,7 @@ resource "alicloud_vpn_gateway_vpn_attachment" "this" {
     }
     
     dynamic "tunnel_bgp_config" {
-      for_each = length(each.value.tunnel_options_specification[0].tunnel_bgp_config) > 0 ? each.value.tunnel_options_specification[0].tunnel_bgp_config : []
+      for_each = length(each.value.tunnel_options_specification[0].tunnel_bgp_config) > 0 ? each.value.tunnel_options_specification[1].tunnel_bgp_config : []
       content {
         local_asn    = tunnel_bgp_config.value.local_asn
         tunnel_cidr  = tunnel_bgp_config.value.tunnel_cidr  # Use a different CIDR for slave tunnel
@@ -90,7 +90,7 @@ resource "alicloud_vpn_gateway_vpn_attachment" "this" {
     }
     
     dynamic "tunnel_ipsec_config" {
-      for_each = length(each.value.tunnel_options_specification[0].tunnel_ipsec_config) > 0 ? each.value.tunnel_options_specification[0].tunnel_ipsec_config : []
+      for_each = length(each.value.tunnel_options_specification[0].tunnel_ipsec_config) > 0 ? each.value.tunnel_options_specification[1].tunnel_ipsec_config : []
       content {
         ipsec_pfs      = tunnel_ipsec_config.value.ipsec_pfs
         ipsec_enc_alg  = tunnel_ipsec_config.value.ipsec_enc_alg
