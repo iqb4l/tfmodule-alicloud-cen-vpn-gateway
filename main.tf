@@ -84,8 +84,8 @@ resource "alicloud_vpn_gateway_vpn_attachment" "this" {
       for_each = length(each.value.tunnel_options_specification[0].tunnel_bgp_config) > 0 ? each.value.tunnel_options_specification[0].tunnel_bgp_config : []
       content {
         local_asn    = tunnel_bgp_config.value.local_asn
-        tunnel_cidr  = tunnel_bgp_config.value.tunnel_cidr_slave  # Use a different CIDR for slave tunnel
-        local_bgp_ip = tunnel_bgp_config.value.local_bgp_ip_slave # Use a different IP for slave tunnel
+        tunnel_cidr  = tunnel_bgp_config.value.tunnel_cidr  # Use a different CIDR for slave tunnel
+        local_bgp_ip = tunnel_bgp_config.value.local_bgp_ip # Use a different IP for slave tunnel
       }
     }
     
